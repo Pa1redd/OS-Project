@@ -3,14 +3,14 @@
 #include <stdbool.h>
 struct Process {
     int pid;
-    int bt;
+    int bat;
     int art;
 };
 void findWaitingTime(struct Process proc[], int n,int wt[])
 {
     int rt[n],i,j;
     for (i = 0; i < n; i++)
-        rt[i] = proc[i].bt;
+        rt[i] = proc[i].bat;
 
     int complete = 0, t = 0, minm = INT_MAX;
     int shortest = 0, finish_time;
@@ -46,7 +46,7 @@ void findTurnAroundTime(struct Process proc[], int n,int wt[], int tat[])
 {
     int i;
     for (i = 0; i < n; i++)
-        tat[i] = proc[i].bt + wt[i];
+        tat[i] = proc[i].bat + wt[i];
 }
 void findavgTime(struct Process proc[], int n)
 {
@@ -78,7 +78,7 @@ int main()
     	printf("Enter arraival time of process \n");
     	scanf("%d",&proc[i].art);
     	printf("Enter burst time of process \n");
-    	scanf("%d",&proc[i].bt);
+    	scanf("%d",&proc[i].bat);
 }
     int n = sizeof(proc) / sizeof(proc[0]);
     findavgTime(proc, n);
