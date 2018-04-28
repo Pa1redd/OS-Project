@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include<limits.h>
 #include <stdbool.h>
-struct Process {
+struct Processes {
     int psid;
     int bat;
     int art;
 };
-void findWaitingTime(struct Process proc[], int n,int wt[])
+void findWaitingTime(struct Processes proc[], int n,int wt[])
 {
     int rt[n],i,j;
     for (i = 0; i < n; i++)
@@ -42,13 +42,13 @@ void findWaitingTime(struct Process proc[], int n,int wt[])
         t++;
     }
 }
-void findTurnAroundTime(struct Process proc[], int n,int wt[], int tat[])
+void findTurnAroundTime(struct Processes proc[], int n,int wt[], int tat[])
 {
     int i;
     for (i = 0; i < n; i++)
         tat[i] = proc[i].bat + wt[i];
 }
-void findavgTime(struct Process proc[], int n)
+void findavgTime(struct Processes proc[], int n)
 {
     int wt[n], tat[n], total_wt = 0,total_tat = 0;
     findWaitingTime(proc, n, wt);
