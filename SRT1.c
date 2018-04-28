@@ -6,7 +6,7 @@ struct Processes {
     int bat;
     int art;
 };
-void findWaitingTime(struct Processes proc[], int n,int wt[])
+void findWaitingTime(struct Processes proc[], int n,int wrt[])
 {
     int rt[n],i,j;
     for (i = 0; i < n; i++)
@@ -36,30 +36,30 @@ void findWaitingTime(struct Processes proc[], int n,int wt[])
             complete++;
             finish_time = t + 1;
             wt[shortest] = finish_time -proc[shortest].bat -proc[shortest].art;
-            if (wt[shortest] < 0)
-                wt[shortest] = 0;
+            if (wrt[shortest] < 0)
+                wrt[shortest] = 0;
         }
         t++;
     }
 }
-void findTurnAroundTime(struct Processes proc[], int n,int wt[], int tat[])
+void findTurnAroundTime(struct Processes proc[], int n,int wrt[], int tat[])
 {
     int i;
     for (i = 0; i < n; i++)
-        tat[i] = proc[i].bat + wt[i];
+        tat[i] = proc[i].bat + wrt[i];
 }
 void findavgTime(struct Processes proc[], int n)
 {
-    int wt[n], tat[n], total_wt = 0,total_tat = 0;
-    findWaitingTime(proc, n, wt);
+    int wrt[n], tat[n], total_wt = 0,total_tat = 0;
+    findWaitingTime(proc, n, wrt);
     findTurnAroundTime(proc, n, wt, tat);
     int i;
     printf( "Processes   Burst time   Waiting time   Turn around time\n");
     for (i = 0; i < n; i++) {
-        total_wt = total_wt + wt[i];
+        total_wt = total_wt + wrt[i];
         total_tat = total_tat + tat[i];
-            printf("%d\t\t%d\t\t%d\t\t%d\t\t\n",proc[i].psid,proc[i].bat,wt[i],tat[i]);
-			    }
+            printf("%d\t\t%d\t\t%d\t\t%d\t\t\n",proc[i].psid,proc[i].bat,wrt[i],tat[i]);
+    }
 
     printf("\nAverage waiting time =%f",(float)total_wt / (float)n);
 
