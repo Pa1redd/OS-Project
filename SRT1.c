@@ -35,7 +35,7 @@ void findWaitingTime(struct Processes proc[], int n,int wt[])
         if (rt[shortest] == 0) {
             complete++;
             finish_time = t + 1;
-            wt[shortest] = finish_time -proc[shortest].bt -proc[shortest].art;
+            wt[shortest] = finish_time -proc[shortest].bat -proc[shortest].art;
             if (wt[shortest] < 0)
                 wt[shortest] = 0;
         }
