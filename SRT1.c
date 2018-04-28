@@ -2,7 +2,7 @@
 #include<limits.h>
 #include <stdbool.h>
 struct Process {
-    int pid;
+    int psid;
     int bat;
     int art;
 };
@@ -58,7 +58,7 @@ void findavgTime(struct Process proc[], int n)
     for (i = 0; i < n; i++) {
         total_wt = total_wt + wt[i];
         total_tat = total_tat + tat[i];
-            printf("%d\t\t%d\t\t%d\t\t%d\t\t\n",proc[i].pid,proc[i].bt,wt[i],tat[i]);
+            printf("%d\t\t%d\t\t%d\t\t%d\t\t\n",proc[i].psid,proc[i].bat,wt[i],tat[i]);
 			    }
 
     printf("\nAverage waiting time =%f",(float)total_wt / (float)n);
@@ -74,7 +74,7 @@ int main()
     for(i=0;i<f;i++)
     {
     	printf("Enter id of process \n");
-    	scanf("%d",&proc[i].pid);
+    	scanf("%d",&proc[i].psid);
     	printf("Enter arraival time of process \n");
     	scanf("%d",&proc[i].art);
     	printf("Enter burst time of process \n");
